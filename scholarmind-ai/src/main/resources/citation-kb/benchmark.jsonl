@@ -1,0 +1,5 @@
+{"capability": "支持论文元数据抽取", "metric": "supported", "value": "yes", "evidence_source_keys": ["paper-library"]}
+{"capability": "支持方法/数据集/指标结构化", "metric": "supported", "value": "yes", "evidence_source_keys": ["paper-library"]}
+{"capability": "支持 BibTeX 导出", "metric": "supported", "value": "yes", "evidence_source_keys": ["paper-library"]}
+{"capability": "支持研究空白梳理", "metric": "supported", "value": "yes", "evidence_source_keys": ["paper-library"]}
+{"capability": "企业版支持团队文献库隔离", "metric": "supported", "value": "yes", "evidence_source_keys": ["paper-library"]}

@@ -1,0 +1,3 @@
+{"question": "学术研究 Agent 应如何处理论文？", "answer": "应抽取研究问题、方法、数据集、指标、结论、局限和引用信息。", "keywords": ["学术AI", "arXiv", "论文速读", "文献综述", "Citation"], "source_keys": ["paper-library"], "confidence": 0.86}
+{"question": "论文摘要为什么不等于可引用知识？", "answer": "可引用知识需要 DOI/arXiv、作者、年份、原文段落和结论边界。", "keywords": ["学术AI", "arXiv", "论文速读", "文献综述", "Citation"], "source_keys": ["paper-library"], "confidence": 0.86}
+{"question": "ScholarMind 的 知识源价值是什么？", "answer": "把论文库变成面向 AI 的结构化研究知识源，支持综述和引用导出。", "keywords": ["学术AI", "arXiv", "论文速读", "文献综述", "Citation"], "source_keys": ["paper-library"], "confidence": 0.86}

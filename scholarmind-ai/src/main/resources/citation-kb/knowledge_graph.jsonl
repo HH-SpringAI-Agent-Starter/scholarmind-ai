@@ -1,0 +1,3 @@
+{"subject": "Paper", "predicate": "uses", "object": "Dataset", "source_keys": ["paper-library"], "confidence": 0.82}
+{"subject": "Paper", "predicate": "proposes", "object": "Method", "source_keys": ["paper-library"], "confidence": 0.82}
+{"subject": "Claim", "predicate": "supported_by", "object": "Citation", "source_keys": ["paper-library"], "confidence": 0.82}
