@@ -1,18 +1,33 @@
-# Contributing
+# Contributing to Scholarmind AI
 
-感谢参与 ScholarMind AI Community。
+We welcome contributions! Here's how to get started.
 
-## 开发规范
+## Development Workflow
 
-- 所有外部系统写操作必须先创建草稿或进入审批。
-- RAG 检索必须返回引用来源。
-- 新增工具必须补充工具描述、测试和安全说明。
-- 不要提交 API Key、客户数据或敏感日志。
+1. Fork the repository
+2. Create a feature branch: `git checkout -b feature/your-feature`
+3. Make your changes
+4. Run tests: `make test`
+5. Submit a pull request
 
-## Issue 模板建议
+## Code Style
 
-- 场景描述
-- 输入示例
-- 期望输出
-- 涉及连接器
-- 是否需要企业版能力
+- Java 21 features encouraged (records, sealed classes, pattern matching)
+- Follow Spring Boot best practices
+- Use Chinese for agent system prompts (user-facing agents)
+- Use English for code, comments, and developer-facing docs
+
+## Pull Request Guidelines
+
+- Keep PRs focused on a single feature or fix
+- Add tests for new functionality
+- Update documentation as needed
+- Ensure all existing tests pass
+
+## Commit Messages
+
+Use conventional commits:
+- `feat: add new feature`
+- `fix: correct bug`
+- `docs: update documentation`
+- `chore: maintenance task`
