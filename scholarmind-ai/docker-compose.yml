@@ -1,34 +1,55 @@
+version: '3.8'
+
 services:
   postgres:
-    image: pgvector/pgvector:pg16
-    container_name: scholarmind-ai-postgres
+    image: pgvector/pgvector:pg17
+    container_name: scholarmind-pgvector
     environment:
+      POSTGRES_USER: scholar
+      POSTGRES_PASSWORD: scholar_secret
       POSTGRES_DB: scholarmind
-      POSTGRES_USER: postgres
-      POSTGRES_PASSWORD: postgres
     ports:
       - "5432:5432"
     volumes:
-      - postgres_data:/var/lib/postgresql/data
+      - pgvector-data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U scholar -d scholarmind"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
   redis:
     image: redis:7-alpine
-    container_name: scholarmind-ai-redis
+    container_name: scholarmind-redis
     ports:
       - "6379:6379"
-  minio:
-    image: minio/minio:latest
-    container_name: scholarmind-ai-minio
-    command: server /data --console-address ':9001'
+    volumes:
+      - redis-data:/data
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  app:
+    build: .
+    container_name: scholarmind-app
+    ports:
+      - "8080:8080"
     environment:
-      MINIO_ROOT_USER: minioadmin
-      MINIO_ROOT_PASSWORD: minioadmin
-    ports:
-      - "9000:9000"
-      - "9001:9001"
-  prometheus:
-    image: prom/prometheus:latest
-    container_name: scholarmind-ai-prometheus
-    ports:
-      - "9090:9090"
+      POSTGRES_URL: jdbc:postgresql://postgres:5432/scholarmind
+      POSTGRES_USER: scholar
+      POSTGRES_PASSWORD: scholar_secret
+      REDIS_HOST: redis
+      REDIS_PORT: 6379
+      OLLAMA_BASE_URL: http://ollama:11434
+    depends_on:
+      postgres:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+    restart: unless-stopped
+
 volumes:
-  postgres_data:
+  pgvector-data:
+  redis-data:
